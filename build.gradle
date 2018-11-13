@@ -1,24 +1,17 @@
 buildscript {
     ext {
-        // define these variables in your personal ~/.gradle/gradle.properties
-        // for example:
-        /*
-            rightmesh_artifactory_username=<username>
-            rightmesh_artifactory_password=<hash of your developer portal password>
-            rightmesh_superpeer_key=<some key that you have access to>
-        */
-        artifactory_app_username = "${rightmesh_artifactory_username}"
-        artifactory_app_password = "${rightmesh_artifactory_password}"
-        artifactory_app_key = "${rightmesh_superpeer_key}"
+        artifactory_app_username = "MimoSaha"
+        artifactory_app_password = "042eda63694c7dd87096e23fd7b72856"
+        artifactory_app_key = "0x7fabfb5fadb381a10951ab7e9bd16e8ce332abe3"
     }
     repositories {
         mavenCentral()
         jcenter()
         maven {
-            url "https://research.rightmesh.io/artifactory/libs-local"
+            url "http://research.rightmesh.io/artifactory/libs-local"
             credentials {
-                username rightmesh_artifactory_username
-                password rightmesh_artifactory_password
+                username artifactory_app_username
+                password artifactory_app_password
             }
         }
     }
@@ -38,14 +31,14 @@ build.dependsOn("rightmesh")
 repositories {
     mavenCentral()
     maven {
-        url "https://dl.bintray.com/ethereum/maven/"
+        url "http://dl.bintray.com/ethereum/maven/"
     }
     jcenter()
     maven {
-        url "https://research.rightmesh.io/artifactory/libs-local"
+        url "http://research.rightmesh.io/artifactory/libs-local"
         credentials {
-            username rightmesh_artifactory_username
-            password rightmesh_artifactory_password
+            username artifactory_app_username
+            password artifactory_app_password
         }
     }
 }
@@ -53,14 +46,13 @@ repositories {
 dependencies {
     implementation 'org.apache.httpcomponents:httpclient:4.3.4'
     implementation 'com.google.guava:guava:23.0'
-    implementation ('io.left.rightmesh:rightmesh-java-library:0.9.0')
-
+    implementation 'io.left.rightmesh:rightmesh-java-library:0.9.0'
     // https://mvnrepository.com/artifact/org.ethereum/ethereumj-core
     implementation 'org.ethereum:ethereumj-core:1.4.5-RELEASE'
     implementation 'mysql:mysql-connector-java:5.1.13'
     implementation 'io.github.cdimascio:java-dotenv:3.1.1'
-
     testCompile 'junit:junit:4.12'
+    implementation files('libs/commons-io-1.2.jar')
 }
 
 applicationDefaultJvmArgs = ["-noverify"]
